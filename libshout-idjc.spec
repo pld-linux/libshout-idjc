@@ -5,13 +5,15 @@
 Summary:	libshout - icecast source streaming library (IDCJ modified version)
 Summary(pl.UTF-8):	Biblioteka źródeł strumieni icecast (wersja zmodyfikowana IDCJ)
 Name:		libshout-idjc
-Version:	2.4.4
+%define	basever	2.4.6
+%define	rver	2
+Version:	%{basever}.%{rver}
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 #Source0Download: https://sourceforge.net/projects/libshoutidjc.idjc.p/files/
-Source0:	https://download.sourceforge.net/libshoutidjc.idjc.p/%{name}-%{version}.tar.gz
-# Source0-md5:	b3d79180d1c520f4c78948f212123978
+Source0:	https://downloads.sourceforge.net/libshoutidjc.idjc.p/%{name}-%{basever}-r%{rver}.tar.gz
+# Source0-md5:	43746a012357781fd495cdbd39c25d19
 URL:		https://idjc.sourceforge.io/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
@@ -67,7 +69,7 @@ Icecast source streaming static library.
 Statyczna biblioteka libshout - źródeł strumieni icecast.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{basever}
 
 %build
 %{__libtoolize}
@@ -104,13 +106,15 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc NEWS README
+%attr(755,root,root) %{_bindir}/shoutidjc
 %attr(755,root,root) %{_libdir}/libshout-idjc.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libshout-idjc.so.3
+%ghost %{_libdir}/libshout-idjc.so.3
+%{_mandir}/man1/shoutidjc.1*
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/libshout.xml
-%attr(755,root,root) %{_libdir}/libshout-idjc.so
+%{_libdir}/libshout-idjc.so
 %{_includedir}/shoutidjc
 %{_pkgconfigdir}/shout-idjc.pc
 %{_examplesdir}/%{name}-%{version}
