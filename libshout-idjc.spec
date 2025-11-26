@@ -8,7 +8,7 @@ Name:		libshout-idjc
 %define	basever	2.4.6
 %define	rver	2
 Version:	%{basever}.%{rver}
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 #Source0Download: https://sourceforge.net/projects/libshoutidjc.idjc.p/files/
